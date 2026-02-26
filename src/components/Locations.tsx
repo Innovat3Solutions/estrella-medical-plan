@@ -73,35 +73,35 @@ export function Locations() {
     ];
 
     return (
-        <section id="locations" className="py-24 bg-gray-50 border-t border-gray-100 relative overflow-hidden scroll-mt-20">
-            {/* Decorative star accents */}
+        <section id="locations" className="py-12 sm:py-16 md:py-24 bg-gray-50 border-t border-gray-100 relative overflow-hidden scroll-mt-20">
+            {/* Decorative star accents - hidden on mobile */}
             <img
                 src="/assets/images/star-accent.png"
                 alt=""
-                className="absolute top-16 right-12 w-48 opacity-[0.08] pointer-events-none"
+                className="absolute top-16 right-12 w-48 opacity-[0.08] pointer-events-none hidden md:block"
             />
             <img
                 src="/assets/images/star-accent.png"
                 alt=""
-                className="absolute bottom-12 left-8 w-36 opacity-[0.06] pointer-events-none rotate-12"
+                className="absolute bottom-12 left-8 w-36 opacity-[0.06] pointer-events-none rotate-12 hidden md:block"
             />
             <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
 
-                <div className="mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                <div className="mb-6 sm:mb-8 md:mb-12">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
                         {language === 'es' ? 'Nuestras Ubicaciones' : 'Our Locations'}
                     </h2>
-                    <p className="text-gray-600 text-lg max-w-2xl">
+                    <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl">
                         {language === 'es'
                             ? 'Encuentre su centro Estrella Medical Center más cercano. Estamos expandiendo nuestra red en los condados de Miami-Dade y Broward para servirle mejor.'
                             : 'Find your nearest Estrella Medical Center. We are expanding our network in Miami-Dade and Broward counties to serve you better.'}
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+                <div className="grid lg:grid-cols-2 gap-6 lg:gap-12">
 
                     {/* Left Column: Map */}
-                    <div className="h-[400px] lg:h-[600px] rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-gray-100 relative">
+                    <div className="h-[250px] sm:h-[300px] lg:h-[600px] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-gray-100 relative">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949920000002!3d25.7823907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1sen!2sus!4v1709068000000!5m2!1sen!2sus"
                             width="100%"
@@ -115,38 +115,68 @@ export function Locations() {
                         />
                     </div>
 
-                    {/* Right Column: Scrollable List */}
-                    <div className="flex flex-col h-[400px] lg:h-[600px]">
-                        <div className="overflow-y-auto pr-2 pb-4 space-y-4 rounded-xl custom-scrollbar" style={{ maskImage: 'linear-gradient(to bottom, black 95%, transparent 100%)' }}>
+                    {/* Right Column: Scrollable List - Horizontal carousel on mobile, vertical scroll on desktop */}
+                    <div className="lg:flex lg:flex-col lg:h-[600px]">
+                        {/* Mobile horizontal carousel */}
+                        <div className="lg:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-4 px-4">
+                            {locations.map((loc) => (
+                                <div key={loc.id} className="snap-start flex-shrink-0 w-[85%] sm:w-[70%] bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
+                                    <div className="flex justify-between items-start mb-2">
+                                        <span className={`text-[9px] sm:text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 sm:py-1 rounded-md ${loc.comingSoon ? 'bg-orange-100 text-orange-600' : 'bg-primary-50 text-primary-base'}`}>
+                                            {loc.type}
+                                        </span>
+                                    </div>
+                                    <h3 className="text-base sm:text-lg font-bold text-primary-dark mb-3">{loc.name}</h3>
+                                    <div className="space-y-2 mb-4">
+                                        <div className="flex items-start gap-2">
+                                            <MapPin size={14} className="text-gray-400 mt-0.5 flex-shrink-0" />
+                                            <span className="text-gray-600 text-xs leading-tight">{loc.address}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <Phone size={14} className="text-gray-400 flex-shrink-0" />
+                                            <span className="text-gray-600 text-xs font-medium">{loc.phone}</span>
+                                        </div>
+                                        <div className="flex items-start gap-2">
+                                            <Clock size={14} className="text-gray-400 mt-0.5 flex-shrink-0" />
+                                            <span className="text-gray-600 text-xs whitespace-pre-line leading-tight">{loc.hours}</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <a href={loc.link} className="flex-1 text-center py-2 px-3 rounded-lg text-xs font-semibold text-primary-base bg-primary-50">
+                                            {language === 'es' ? 'Direcciones' : 'Directions'}
+                                        </a>
+                                        <a href="#enrollment" className="flex-1 text-center py-2 px-3 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-primary-dark to-primary-base shadow-md">
+                                            {language === 'es' ? 'Reservar' : 'Book'}
+                                        </a>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
 
+                        {/* Desktop vertical scroll */}
+                        <div className="hidden lg:block overflow-y-auto pr-2 pb-4 space-y-4 rounded-xl custom-scrollbar h-full" style={{ maskImage: 'linear-gradient(to bottom, black 95%, transparent 100%)' }}>
                             {locations.map((loc) => (
                                 <div key={loc.id} className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-
                                     <div className="flex justify-between items-start mb-2">
                                         <span className={`text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md ${loc.comingSoon ? 'bg-orange-100 text-orange-600' : 'bg-primary-50 text-primary-base'}`}>
                                             {loc.type}
                                         </span>
                                     </div>
-
                                     <h3 className="text-lg font-bold text-primary-dark mb-4">{loc.name}</h3>
-
                                     <div className="space-y-3 mb-6">
                                         <div className="flex items-start gap-3">
                                             <MapPin size={18} className="text-gray-400 mt-0.5" />
                                             <span className="text-gray-600 text-sm leading-tight">{loc.address}</span>
                                         </div>
-
                                         <div className="flex items-center gap-3">
                                             <Phone size={18} className="text-gray-400" />
                                             <span className="text-gray-600 text-sm font-medium">{loc.phone}</span>
                                         </div>
-
                                         <div className="flex items-start gap-3">
                                             <Clock size={18} className="text-gray-400 mt-0.5" />
                                             <span className="text-gray-600 text-sm whitespace-pre-line leading-tight">{loc.hours}</span>
                                         </div>
                                     </div>
-
                                     <div className="flex gap-3 pt-2 border-t border-gray-50">
                                         <a href={loc.link} className="flex-1 text-center py-2 px-4 rounded-lg text-sm font-semibold text-primary-base bg-primary-50 hover:bg-primary-100 transition-colors">
                                             {language === 'es' ? 'Direcciones' : 'Directions'}
@@ -155,10 +185,8 @@ export function Locations() {
                                             {language === 'es' ? 'Reservar Visita' : 'Book Visit'}
                                         </a>
                                     </div>
-
                                 </div>
                             ))}
-
                         </div>
                     </div>
 

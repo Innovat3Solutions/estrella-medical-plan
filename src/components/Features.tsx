@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Stethoscope, Video, HeartPulse, Activity, Eye, Smile, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { Button } from './ui/Button';
 import { useLanguage } from '../context/LanguageContext';
@@ -127,36 +127,135 @@ export function Features() {
     const activeFeature = features[activeIndex];
     const { language } = useLanguage();
     const currentDetails = language === 'es' ? activeFeature.details : activeFeature.detailsEn;
+    const mobileCarouselRef = useRef<HTMLDivElement>(null);
+    const [mobileActiveIndex, setMobileActiveIndex] = useState(0);
+
+    // Handle scroll to update active indicator on mobile
+    useEffect(() => {
+        const carousel = mobileCarouselRef.current;
+        if (!carousel) return;
+
+        const handleScroll = () => {
+            const scrollLeft = carousel.scrollLeft;
+            const cardWidth = carousel.offsetWidth * 0.8 + 16;
+            const newIndex = Math.round(scrollLeft / cardWidth);
+            setMobileActiveIndex(Math.min(newIndex, features.length - 1));
+        };
+
+        carousel.addEventListener('scroll', handleScroll);
+        return () => carousel.removeEventListener('scroll', handleScroll);
+    }, [features.length]);
+
+    const scrollToFeature = (index: number) => {
+        const carousel = mobileCarouselRef.current;
+        if (!carousel) return;
+        const cardWidth = carousel.offsetWidth * 0.8 + 16;
+        carousel.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
+    };
 
     return (
-        <section id="features" className="py-24 bg-gray-50 relative overflow-hidden scroll-mt-20">
-            {/* Decorative star accents */}
+        <section id="features" className="py-16 md:py-24 bg-gray-50 relative overflow-hidden scroll-mt-20">
+            {/* Decorative star accents - hidden on mobile */}
             <img
                 src="/assets/images/star-accent.png"
                 alt=""
-                className="absolute top-24 left-8 w-56 opacity-[0.08] pointer-events-none"
+                className="absolute top-24 left-8 w-56 opacity-[0.08] pointer-events-none hidden md:block"
             />
             <img
                 src="/assets/images/star-accent.png"
                 alt=""
-                className="absolute bottom-16 right-8 w-44 opacity-[0.06] pointer-events-none rotate-12"
+                className="absolute bottom-16 right-8 w-44 opacity-[0.06] pointer-events-none rotate-12 hidden md:block"
             />
             <div className="container mx-auto px-4 lg:px-8 relative z-10">
                 {/* Section Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-primary-base font-semibold tracking-wide uppercase text-sm md:text-base mb-3">
+                <div className="text-center max-w-3xl mx-auto mb-8 md:mb-16">
+                    <h2 className="text-primary-base font-semibold tracking-wide uppercase text-xs sm:text-sm md:text-base mb-2 md:mb-3">
                         {t('features.badge')}
                     </h2>
-                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
                         {t('features.title')}
                     </h3>
-                    <p className="text-lg text-gray-600">
+                    <p className="text-sm sm:text-base md:text-lg text-gray-600 px-4">
                         {t('features.subtitle')}
                     </p>
                 </div>
 
-                {/* Interactive Feature Display */}
-                <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+                {/* Mobile Carousel View */}
+                <div className="lg:hidden">
+                    <div
+                        ref={mobileCarouselRef}
+                        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-4 px-4"
+                    >
+                        {features.map((feature) => {
+                            const Icon = feature.icon;
+                            const details = language === 'es' ? feature.details : feature.detailsEn;
+                            return (
+                                <div
+                                    key={feature.id}
+                                    className="snap-start flex-shrink-0 w-[80%] sm:w-[70%] bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden"
+                                >
+                                    {/* Card Image */}
+                                    <div className="relative h-40 overflow-hidden">
+                                        <img
+                                            src={feature.image}
+                                            alt={feature.title}
+                                            className="w-full h-full object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                                                    <Icon size={16} className="text-white" />
+                                                </div>
+                                                <h4 className="text-lg font-bold text-white">
+                                                    {feature.title}
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/* Card Content */}
+                                    <div className="p-4">
+                                        <p className="text-gray-600 text-sm leading-relaxed mb-3 line-clamp-2">
+                                            {feature.description}
+                                        </p>
+                                        <div className="space-y-2 mb-4">
+                                            {details.slice(0, 3).map((detail, i) => (
+                                                <div key={i} className="flex items-start gap-2">
+                                                    <CheckCircle2 size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
+                                                    <span className="text-gray-700 text-xs font-medium">{detail}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <a href="#enrollment" className="block">
+                                            <Button variant="primary" fullWidth size="md">
+                                                {t('features.enrollNow')}
+                                            </Button>
+                                        </a>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* Mobile Carousel Indicators */}
+                    <div className="flex justify-center gap-2 mt-4">
+                        {features.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => scrollToFeature(index)}
+                                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                    mobileActiveIndex === index
+                                        ? 'bg-primary-base w-6'
+                                        : 'bg-gray-300'
+                                }`}
+                                aria-label={`Go to feature ${index + 1}`}
+                            />
+                        ))}
+                    </div>
+                </div>
+
+                {/* Desktop Interactive Feature Display */}
+                <div className="hidden lg:block bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
                     <div className="grid lg:grid-cols-12">
 
                         {/* Left Menu */}
