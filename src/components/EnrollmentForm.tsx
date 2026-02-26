@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Button } from './ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 
-// TODO: Replace with actual payment link
-const PAYMENT_LINK = 'https://payment-link-here.com';
+const PAYMENT_LINK = 'https://link.fastpaydirect.com/payment-link/69a0bf797819e367cb917544';
 
 export function EnrollmentForm() {
     const [formData, setFormData] = useState({
