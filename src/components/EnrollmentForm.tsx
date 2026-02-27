@@ -27,7 +27,7 @@ export function EnrollmentForm() {
     };
 
     return (
-        <section className="py-16 md:py-24 bg-primary-dark relative overflow-hidden text-white" id="enrollment">
+        <section className="py-12 sm:py-16 md:py-24 bg-primary-dark relative overflow-hidden text-white" id="enrollment">
             {/* Decorative Gradients */}
             <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-primary-base/50 to-transparent z-0" />
             <div className="absolute -bottom-48 -left-48 w-96 h-96 bg-accent-base/10 rounded-full blur-3xl z-0 hidden sm:block" />
@@ -49,70 +49,86 @@ export function EnrollmentForm() {
             />
 
             <div className="container mx-auto px-4 lg:px-8 relative z-10">
-                <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl sm:rounded-[2rem] p-5 sm:p-8 md:p-12 max-w-4xl mx-auto shadow-2xl">
-                    <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-center">
+                <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl sm:rounded-[2rem] p-4 sm:p-6 md:p-12 max-w-4xl mx-auto shadow-2xl">
+                    <div className="grid md:grid-cols-5 gap-6 md:gap-12 items-center">
 
                         <div className="md:col-span-2 text-center md:text-left">
                             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
                                 {language === 'es' ? 'Inscríbase Hoy' : 'Enroll Today'}
                             </h2>
-                            <p className="text-primary-light/80 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 leading-relaxed max-w-sm mx-auto md:mx-0">
+                            <p className="text-primary-light/80 text-sm sm:text-base md:text-lg mb-4 sm:mb-6 leading-relaxed max-w-sm mx-auto md:mx-0">
                                 {language === 'es'
                                     ? 'Complete el formulario y continúe al pago para activar su membresía.'
                                     : 'Complete the form and proceed to payment to activate your membership.'}
                             </p>
 
-                            {/* Steps - horizontal on mobile, vertical on md+ */}
-                            <div className="flex md:flex-col gap-4 overflow-x-auto scrollbar-hide pb-2 md:pb-0 -mx-2 px-2 md:mx-0 md:px-0 justify-center md:justify-start">
-                                <div className="flex items-center gap-3 md:gap-4 flex-shrink-0 min-w-[140px] md:min-w-0">
-                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-accent-light text-sm md:text-base">
+                            {/* Steps - compact row on mobile, vertical on md+ */}
+                            <div className="hidden md:flex md:flex-col gap-4">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-accent-light">
                                         1
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-white text-sm md:text-base">
+                                        <h4 className="font-semibold text-white">
                                             {language === 'es' ? 'Complete sus datos' : 'Fill in your details'}
                                         </h4>
-                                        <p className="text-xs md:text-sm text-white/60 hidden sm:block">
+                                        <p className="text-sm text-white/60">
                                             {language === 'es' ? 'Información básica de contacto' : 'Basic contact information'}
                                         </p>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-3 md:gap-4 flex-shrink-0 min-w-[140px] md:min-w-0">
-                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-accent-light text-sm md:text-base">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-accent-light">
                                         2
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-white text-sm md:text-base">
+                                        <h4 className="font-semibold text-white">
                                             {language === 'es' ? 'Realice el pago' : 'Make payment'}
                                         </h4>
-                                        <p className="text-xs md:text-sm text-white/60 hidden sm:block">
+                                        <p className="text-sm text-white/60">
                                             {language === 'es' ? 'Pago seguro en línea' : 'Secure online payment'}
                                         </p>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-3 md:gap-4 flex-shrink-0 min-w-[140px] md:min-w-0">
-                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-accent-light text-sm md:text-base">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-accent-light">
                                         3
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-white text-sm md:text-base">
+                                        <h4 className="font-semibold text-white">
                                             {language === 'es' ? 'Reciba su membresía' : 'Receive your membership'}
                                         </h4>
-                                        <p className="text-xs md:text-sm text-white/60 hidden sm:block">
+                                        <p className="text-sm text-white/60">
                                             {language === 'es' ? 'Manual enviado por email' : 'Manual sent via email'}
                                         </p>
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Mobile: Simple numbered badges */}
+                            <div className="flex md:hidden justify-center gap-3 mb-2">
+                                <div className="flex items-center gap-2 bg-white/10 rounded-full px-3 py-1.5">
+                                    <span className="w-5 h-5 rounded-full bg-accent-light/20 flex items-center justify-center text-accent-light text-xs font-bold">1</span>
+                                    <span className="text-xs text-white/80">{language === 'es' ? 'Datos' : 'Info'}</span>
+                                </div>
+                                <div className="flex items-center gap-2 bg-white/10 rounded-full px-3 py-1.5">
+                                    <span className="w-5 h-5 rounded-full bg-accent-light/20 flex items-center justify-center text-accent-light text-xs font-bold">2</span>
+                                    <span className="text-xs text-white/80">{language === 'es' ? 'Pago' : 'Pay'}</span>
+                                </div>
+                                <div className="flex items-center gap-2 bg-white/10 rounded-full px-3 py-1.5">
+                                    <span className="w-5 h-5 rounded-full bg-accent-light/20 flex items-center justify-center text-accent-light text-xs font-bold">3</span>
+                                    <span className="text-xs text-white/80">{language === 'es' ? 'Listo' : 'Done'}</span>
+                                </div>
+                            </div>
                         </div>
 
                         <div className="md:col-span-3 bg-white text-gray-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
-                            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
-                                <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-center sm:text-left">
+                            <form onSubmit={handleSubmit} className="space-y-3">
+                                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4 md:mb-6 text-center md:text-left">
                                     {language === 'es' ? 'Información Personal' : 'Personal Information'}
                                 </h3>
 
-                                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     <div className="space-y-1">
                                         <label htmlFor="firstName" className="text-xs sm:text-sm font-medium text-gray-700">
                                             {language === 'es' ? 'Nombre' : 'First Name'}
@@ -124,7 +140,7 @@ export function EnrollmentForm() {
                                             required
                                             value={formData.firstName}
                                             onChange={handleChange}
-                                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm sm:text-base"
+                                            className="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm"
                                             placeholder="Juan"
                                         />
                                     </div>
@@ -139,7 +155,7 @@ export function EnrollmentForm() {
                                             required
                                             value={formData.lastName}
                                             onChange={handleChange}
-                                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm sm:text-base"
+                                            className="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm"
                                             placeholder="Pérez"
                                         />
                                     </div>
@@ -156,13 +172,13 @@ export function EnrollmentForm() {
                                         required
                                         value={formData.dateOfBirth}
                                         onChange={handleChange}
-                                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm sm:text-base"
+                                        className="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm"
                                     />
                                 </div>
 
                                 <div className="space-y-1">
                                     <label htmlFor="email" className="text-xs sm:text-sm font-medium text-gray-700">
-                                        {language === 'es' ? 'Correo Electrónico' : 'Email Address'}
+                                        {language === 'es' ? 'Correo Electrónico' : 'Email'}
                                     </label>
                                     <input
                                         type="email"
@@ -171,14 +187,14 @@ export function EnrollmentForm() {
                                         required
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm sm:text-base"
+                                        className="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm"
                                         placeholder="juan@ejemplo.com"
                                     />
                                 </div>
 
                                 <div className="space-y-1">
                                     <label htmlFor="phone" className="text-xs sm:text-sm font-medium text-gray-700">
-                                        {language === 'es' ? 'Teléfono' : 'Phone Number'}
+                                        {language === 'es' ? 'Teléfono' : 'Phone'}
                                     </label>
                                     <input
                                         type="tel"
@@ -187,14 +203,14 @@ export function EnrollmentForm() {
                                         required
                                         value={formData.phone}
                                         onChange={handleChange}
-                                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm sm:text-base"
+                                        className="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm"
                                         placeholder="(305) 555-0123"
                                     />
                                 </div>
 
                                 <div className="space-y-1">
                                     <label htmlFor="address" className="text-xs sm:text-sm font-medium text-gray-700">
-                                        {language === 'es' ? 'Dirección' : 'Home Address'}
+                                        {language === 'es' ? 'Dirección' : 'Address'}
                                     </label>
                                     <input
                                         type="text"
@@ -203,19 +219,19 @@ export function EnrollmentForm() {
                                         required
                                         value={formData.address}
                                         onChange={handleChange}
-                                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm sm:text-base"
-                                        placeholder={language === 'es' ? '123 Calle Principal, Miami, FL 33125' : '123 Main Street, Miami, FL 33125'}
+                                        className="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm"
+                                        placeholder={language === 'es' ? '123 Calle Principal, Miami' : '123 Main St, Miami'}
                                     />
                                 </div>
 
-                                <div className="pt-3 sm:pt-4">
+                                <div className="pt-2 sm:pt-3">
                                     <Button type="submit" variant="primary" fullWidth size="lg">
                                         {language === 'es' ? 'Continuar al Pago' : 'Continue to Payment'}
                                     </Button>
-                                    <p className="text-center text-[10px] sm:text-xs text-gray-500 mt-3 sm:mt-4">
+                                    <p className="text-center text-[10px] sm:text-xs text-gray-500 mt-2 sm:mt-3">
                                         {language === 'es'
-                                            ? 'Al continuar, acepta nuestros términos y condiciones.'
-                                            : 'By continuing, you agree to our terms and conditions.'}
+                                            ? 'Al continuar, acepta nuestros términos.'
+                                            : 'By continuing, you agree to our terms.'}
                                     </p>
                                 </div>
                             </form>
