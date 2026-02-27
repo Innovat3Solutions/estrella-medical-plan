@@ -375,22 +375,22 @@ export function Features() {
                 </div>
 
                 {/* CTA Card */}
-                <div className="mt-16 text-center bg-white rounded-3xl p-8 lg:p-12 shadow-md border border-gray-100 relative overflow-hidden max-w-5xl mx-auto">
-                    <div className="absolute -right-24 -top-24 w-64 h-64 bg-accent-light/20 blur-3xl rounded-full" />
-                    <div className="absolute -left-24 -bottom-24 w-64 h-64 bg-primary-light/20 blur-3xl rounded-full" />
+                <div className="mt-10 md:mt-16 text-center bg-white rounded-2xl md:rounded-3xl p-6 sm:p-8 lg:p-12 shadow-md border border-gray-100 relative overflow-hidden max-w-5xl mx-auto">
+                    <div className="absolute -right-24 -top-24 w-64 h-64 bg-accent-light/20 blur-3xl rounded-full hidden md:block" />
+                    <div className="absolute -left-24 -bottom-24 w-64 h-64 bg-primary-light/20 blur-3xl rounded-full hidden md:block" />
 
-                    <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center text-left">
+                    <div className="relative z-10 grid md:grid-cols-2 gap-6 md:gap-8 items-center text-center md:text-left">
                         <div>
-                            <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                            <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-4">
                                 {t('features.cta.title')}
                             </h4>
-                            <p className="text-gray-600 mb-0">
+                            <p className="text-gray-600 text-sm sm:text-base mb-4 md:mb-0">
                                 {t('features.cta.subtitle')}
                             </p>
                         </div>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-start md:justify-end">
-                            <a href="#enrollment">
-                                <Button variant="accent" size="lg" className="whitespace-nowrap">
+                        <div className="flex justify-center md:justify-end">
+                            <a href="#enrollment" className="w-full sm:w-auto">
+                                <Button variant="accent" size="lg" className="whitespace-nowrap w-full sm:w-auto">
                                     {t('features.enrollNow')}
                                 </Button>
                             </a>

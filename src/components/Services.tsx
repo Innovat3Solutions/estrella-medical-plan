@@ -81,7 +81,7 @@ export function Services() {
                 className="absolute bottom-8 left-12 w-36 opacity-[0.06] pointer-events-none -rotate-12 hidden md:block"
             />
             <div className="container mx-auto px-4 lg:px-8 relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-4 md:gap-6">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-8 md:mb-12 gap-4 md:gap-6 text-center md:text-left">
                     <div className="max-w-2xl">
                         <h2 className="text-primary-base font-semibold tracking-wide uppercase text-xs sm:text-sm md:text-base mb-2 md:mb-3">
                             {t('services.badge')}

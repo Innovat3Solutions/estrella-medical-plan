@@ -87,11 +87,11 @@ export function Locations() {
             />
             <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
 
-                <div className="mb-6 sm:mb-8 md:mb-12">
+                <div className="mb-6 sm:mb-8 md:mb-12 text-center lg:text-left">
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
                         {language === 'es' ? 'Nuestras Ubicaciones' : 'Our Locations'}
                     </h2>
-                    <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl">
+                    <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto lg:mx-0">
                         {language === 'es'
                             ? 'Encuentre su centro Estrella Medical Center más cercano. Estamos expandiendo nuestra red en los condados de Miami-Dade y Broward para servirle mejor.'
                             : 'Find your nearest Estrella Medical Center. We are expanding our network in Miami-Dade and Broward counties to serve you better.'}

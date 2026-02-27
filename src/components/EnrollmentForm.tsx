@@ -52,18 +52,18 @@ export function EnrollmentForm() {
                 <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl sm:rounded-[2rem] p-5 sm:p-8 md:p-12 max-w-4xl mx-auto shadow-2xl">
                     <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-center">
 
-                        <div className="md:col-span-2">
+                        <div className="md:col-span-2 text-center md:text-left">
                             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
                                 {language === 'es' ? 'Inscríbase Hoy' : 'Enroll Today'}
                             </h2>
-                            <p className="text-primary-light/80 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 leading-relaxed">
+                            <p className="text-primary-light/80 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 leading-relaxed max-w-sm mx-auto md:mx-0">
                                 {language === 'es'
                                     ? 'Complete el formulario y continúe al pago para activar su membresía.'
                                     : 'Complete the form and proceed to payment to activate your membership.'}
                             </p>
 
                             {/* Steps - horizontal on mobile, vertical on md+ */}
-                            <div className="flex md:flex-col gap-4 overflow-x-auto scrollbar-hide pb-2 md:pb-0 -mx-2 px-2 md:mx-0 md:px-0">
+                            <div className="flex md:flex-col gap-4 overflow-x-auto scrollbar-hide pb-2 md:pb-0 -mx-2 px-2 md:mx-0 md:px-0 justify-center md:justify-start">
                                 <div className="flex items-center gap-3 md:gap-4 flex-shrink-0 min-w-[140px] md:min-w-0">
                                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-accent-light text-sm md:text-base">
                                         1
@@ -108,7 +108,7 @@ export function EnrollmentForm() {
 
                         <div className="md:col-span-3 bg-white text-gray-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
                             <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
-                                <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">
+                                <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-center sm:text-left">
                                     {language === 'es' ? 'Información Personal' : 'Personal Information'}
                                 </h3>
 

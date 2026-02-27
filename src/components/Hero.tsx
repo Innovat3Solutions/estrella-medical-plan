@@ -58,14 +58,14 @@ export function Hero() {
                             {t('hero.subtitle')}
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in-up delay-300 justify-center lg:justify-start">
-                            <a href="#enrollment" className="w-full sm:w-auto">
-                                <Button variant="accent" size="lg" className="animate-pulse-glow w-full sm:w-auto">
+                        <div className="flex flex-row gap-2 sm:gap-4 animate-fade-in-up delay-300 justify-center lg:justify-start">
+                            <a href="#enrollment" className="flex-1 sm:flex-none">
+                                <Button variant="accent" size="lg" className="animate-pulse-glow w-full sm:w-auto text-xs sm:text-base px-3 sm:px-6">
                                     {t('hero.cta1')}
                                 </Button>
                             </a>
-                            <a href="#about" className="w-full sm:w-auto">
-                                <Button variant="outline-white" size="lg" className="w-full sm:w-auto">
+                            <a href="#about" className="flex-1 sm:flex-none">
+                                <Button variant="outline-white" size="lg" className="w-full sm:w-auto text-xs sm:text-base px-3 sm:px-6">
                                     {t('hero.cta2')}
                                 </Button>
                             </a>

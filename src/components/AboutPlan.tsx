@@ -54,7 +54,7 @@ export function AboutPlan() {
                         </div>
                     </div>
 
-                    <div className="lg:pl-8">
+                    <div className="lg:pl-8 text-center lg:text-left">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-light/20 text-accent-dark font-medium text-xs sm:text-sm mb-4 sm:mb-6 border border-accent-light/30">
                             {t('about.badge')}
                         </div>
@@ -66,7 +66,7 @@ export function AboutPlan() {
                             </span>
                         </h2>
 
-                        <p className="text-sm sm:text-base lg:text-lg text-gray-600 mb-6 sm:mb-10 leading-relaxed">
+                        <p className="text-sm sm:text-base lg:text-lg text-gray-600 mb-6 sm:mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0">
                             {t('about.description')}
                         </p>
 
