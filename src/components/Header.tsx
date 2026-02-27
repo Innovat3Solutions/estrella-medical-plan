@@ -31,8 +31,19 @@ export function Header() {
             }`}
         >
             <div className="container mx-auto px-4 lg:px-8">
-                <div className="flex items-center justify-between">
-                    <div className="flex z-50">
+                <div className="flex items-center justify-between lg:justify-between">
+                    {/* Mobile: Hamburger on left */}
+                    <div className="lg:hidden flex z-50 w-10">
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className={`p-2 text-gray-600 hover:text-primary-base transition-all ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                        >
+                            <Menu size={24} />
+                        </button>
+                    </div>
+
+                    {/* Logo - Centered on mobile, left on desktop */}
+                    <div className={`flex z-50 lg:flex-none absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 transition-opacity duration-200 ${isMobileMenuOpen ? 'lg:opacity-100 opacity-0' : 'opacity-100'}`}>
                         <Link to="/" className="flex items-center">
                             <img
                                 src="/assets/logos/Logo_estrella.png"
@@ -41,6 +52,9 @@ export function Header() {
                             />
                         </Link>
                     </div>
+
+                    {/* Mobile: Empty spacer for balance */}
+                    <div className="lg:hidden w-10" />
 
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center gap-6">
@@ -105,15 +119,6 @@ export function Header() {
                         </a>
                     </div>
 
-                    {/* Mobile Menu Toggle */}
-                    <div className="lg:hidden flex z-50">
-                        <button
-                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="p-2 text-gray-600 hover:text-primary-base transition-colors"
-                        >
-                            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                        </button>
-                    </div>
                 </div>
             </div>
 
