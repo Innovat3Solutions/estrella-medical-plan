@@ -1,8 +1,11 @@
-import { MapPin, Phone, Clock } from 'lucide-react';
+import { useState } from 'react';
+import { MapPin, Phone, Clock, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export function Locations() {
     const { language } = useLanguage();
+    const [selectedLocationId, setSelectedLocationId] = useState(1);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const locations = [
         {
@@ -72,6 +75,8 @@ export function Locations() {
         }
     ];
 
+    const selectedLocation = locations.find(loc => loc.id === selectedLocationId) || locations[0];
+
     return (
         <section id="locations" className="py-12 sm:py-16 md:py-24 bg-gray-50 border-t border-gray-100 relative overflow-hidden scroll-mt-20">
             {/* Decorative star accents - hidden on mobile */}
@@ -115,42 +120,93 @@ export function Locations() {
                         />
                     </div>
 
-                    {/* Right Column: Scrollable List - Horizontal carousel on mobile, vertical scroll on desktop */}
+                    {/* Right Column: Dropdown on mobile, vertical scroll on desktop */}
                     <div className="lg:flex lg:flex-col lg:h-[600px]">
-                        {/* Mobile horizontal carousel */}
-                        <div className="lg:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-4 px-4">
-                            {locations.map((loc) => (
-                                <div key={loc.id} className="snap-start flex-shrink-0 w-[85%] sm:w-[70%] bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
-                                    <div className="flex justify-between items-start mb-2">
-                                        <span className={`text-[9px] sm:text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 sm:py-1 rounded-md ${loc.comingSoon ? 'bg-orange-100 text-orange-600' : 'bg-primary-50 text-primary-base'}`}>
-                                            {loc.type}
-                                        </span>
-                                    </div>
-                                    <h3 className="text-base sm:text-lg font-bold text-primary-dark mb-3">{loc.name}</h3>
-                                    <div className="space-y-2 mb-4">
-                                        <div className="flex items-start gap-2">
-                                            <MapPin size={14} className="text-gray-400 mt-0.5 flex-shrink-0" />
-                                            <span className="text-gray-600 text-xs leading-tight">{loc.address}</span>
+                        {/* Mobile Dropdown Selector */}
+                        <div className="lg:hidden">
+                            {/* Dropdown Button */}
+                            <div className="relative mb-4">
+                                <button
+                                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                    className="w-full flex items-center justify-between bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm text-left"
+                                >
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center">
+                                            <MapPin size={18} className="text-primary-base" />
                                         </div>
-                                        <div className="flex items-center gap-2">
-                                            <Phone size={14} className="text-gray-400 flex-shrink-0" />
-                                            <span className="text-gray-600 text-xs font-medium">{loc.phone}</span>
-                                        </div>
-                                        <div className="flex items-start gap-2">
-                                            <Clock size={14} className="text-gray-400 mt-0.5 flex-shrink-0" />
-                                            <span className="text-gray-600 text-xs whitespace-pre-line leading-tight">{loc.hours}</span>
+                                        <div>
+                                            <p className="text-sm font-semibold text-gray-900 line-clamp-1">{selectedLocation.name}</p>
+                                            <p className="text-xs text-gray-500">{selectedLocation.type}</p>
                                         </div>
                                     </div>
-                                    <div className="flex gap-2">
-                                        <a href={loc.link} className="flex-1 text-center py-2 px-3 rounded-lg text-xs font-semibold text-primary-base bg-primary-50">
-                                            {language === 'es' ? 'Direcciones' : 'Directions'}
+                                    <ChevronDown size={20} className={`text-gray-400 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                                </button>
+
+                                {/* Dropdown Menu */}
+                                {isDropdownOpen && (
+                                    <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
+                                        {locations.map((loc) => (
+                                            <button
+                                                key={loc.id}
+                                                onClick={() => {
+                                                    setSelectedLocationId(loc.id);
+                                                    setIsDropdownOpen(false);
+                                                }}
+                                                className={`w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0 ${
+                                                    selectedLocationId === loc.id ? 'bg-primary-50' : ''
+                                                }`}
+                                            >
+                                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                                                    loc.comingSoon ? 'bg-orange-100' : 'bg-primary-50'
+                                                }`}>
+                                                    <MapPin size={14} className={loc.comingSoon ? 'text-orange-600' : 'text-primary-base'} />
+                                                </div>
+                                                <div className="flex-1 min-w-0">
+                                                    <p className="text-sm font-medium text-gray-900 truncate">{loc.name}</p>
+                                                    <p className={`text-[10px] font-bold uppercase ${loc.comingSoon ? 'text-orange-600' : 'text-gray-500'}`}>{loc.type}</p>
+                                                </div>
+                                                {selectedLocationId === loc.id && (
+                                                    <div className="w-2 h-2 rounded-full bg-primary-base" />
+                                                )}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Selected Location Details Card */}
+                            <div className="bg-white rounded-xl p-5 border border-gray-100 shadow-sm">
+                                <div className="flex items-center justify-between mb-4">
+                                    <span className={`text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md ${selectedLocation.comingSoon ? 'bg-orange-100 text-orange-600' : 'bg-primary-50 text-primary-base'}`}>
+                                        {selectedLocation.type}
+                                    </span>
+                                </div>
+                                <h3 className="text-lg font-bold text-primary-dark mb-4">{selectedLocation.name}</h3>
+                                <div className="space-y-3 mb-5">
+                                    <div className="flex items-start gap-3">
+                                        <MapPin size={16} className="text-gray-400 mt-0.5 flex-shrink-0" />
+                                        <span className="text-gray-600 text-sm leading-tight">{selectedLocation.address}</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <Phone size={16} className="text-gray-400 flex-shrink-0" />
+                                        <a href={`tel:${selectedLocation.phone.replace(/[^0-9]/g, '')}`} className="text-gray-600 text-sm font-medium hover:text-primary-base transition-colors">
+                                            {selectedLocation.phone}
                                         </a>
-                                        <a href="#enrollment" className="flex-1 text-center py-2 px-3 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-primary-dark to-primary-base shadow-md">
-                                            {language === 'es' ? 'Reservar' : 'Book'}
-                                        </a>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <Clock size={16} className="text-gray-400 mt-0.5 flex-shrink-0" />
+                                        <span className="text-gray-600 text-sm whitespace-pre-line leading-tight">{selectedLocation.hours}</span>
                                     </div>
                                 </div>
-                            ))}
+                                <div className="flex gap-3">
+                                    <a href={selectedLocation.link} className="flex-1 text-center py-3 px-4 rounded-lg text-sm font-semibold text-primary-base bg-primary-50 hover:bg-primary-100 transition-colors">
+                                        {language === 'es' ? 'Direcciones' : 'Directions'}
+                                    </a>
+                                    <a href="#enrollment" className="flex-1 text-center py-3 px-4 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-primary-dark to-primary-base shadow-md hover:opacity-90 transition-opacity">
+                                        {language === 'es' ? 'Reservar' : 'Book'}
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Desktop vertical scroll */}
