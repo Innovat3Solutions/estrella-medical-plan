@@ -40,8 +40,8 @@ export function Hero() {
                 {/* Mobile: Stack vertically with card first, Desktop: Side by side */}
                 <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
 
-                    {/* Text Content - Order 2 on mobile (below card), Order 1 on desktop */}
-                    <div className="max-w-2xl order-2 lg:order-1 text-center lg:text-left">
+                    {/* Text Content - Order 1 on mobile (above card), Order 1 on desktop */}
+                    <div className="max-w-2xl order-1 lg:order-1 text-center lg:text-left">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-accent-light font-medium text-xs sm:text-sm mb-4 md:mb-6 border border-white/20 backdrop-blur-sm shadow-sm animate-fade-in-down">
                             <ShieldCheck size={14} className="sm:w-4 sm:h-4" />
                             <span>{t('hero.badge')}</span>
@@ -83,8 +83,8 @@ export function Hero() {
                         </div>
                     </div>
 
-                    {/* Pricing Card - Order 1 on mobile (above text), Order 2 on desktop */}
-                    <div className="relative w-full max-w-[320px] sm:max-w-md lg:max-w-none lg:ml-auto xl:w-[500px] order-1 lg:order-2 animate-slide-in-right delay-200 mx-auto lg:mx-0">
+                    {/* Pricing Card - Order 2 on mobile (below text), Order 2 on desktop */}
+                    <div className="relative w-full max-w-[320px] sm:max-w-md lg:max-w-none lg:ml-auto xl:w-[500px] order-2 lg:order-2 animate-slide-in-right delay-200 mx-auto lg:mx-0">
                         {/* The Pricing Card matching the inspiration */}
                         <div className="relative bg-white rounded-[1.5rem] sm:rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100 z-10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-3xl">
 
