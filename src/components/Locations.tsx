@@ -17,7 +17,9 @@ export function Locations() {
             hours: language === 'es'
                 ? 'Lunes a Viernes: 7:30am - 5:00pm\nSábados: 8:00am - 3:00pm'
                 : 'Monday - Friday: 7:30am - 5:00pm\nSaturday: 8:00am - 3:00pm',
-            link: '#'
+            link: '#',
+            lat: 25.7629,
+            lng: -80.3032
         },
         {
             id: 2,
@@ -28,7 +30,9 @@ export function Locations() {
             hours: language === 'es'
                 ? 'Lunes a Viernes: 7:30am - 5:00pm\nSábados: 8:00am - 3:00pm'
                 : 'Monday - Friday: 7:30am - 5:00pm\nSaturday: 8:00am - 3:00pm',
-            link: '#'
+            link: '#',
+            lat: 25.7324,
+            lng: -80.3851
         },
         {
             id: 3,
@@ -39,7 +43,9 @@ export function Locations() {
             hours: language === 'es'
                 ? 'Lunes a Viernes: 7:30am - 5:00pm'
                 : 'Monday - Friday: 7:30am - 5:00pm',
-            link: '#'
+            link: '#',
+            lat: 26.1285,
+            lng: -80.2545
         },
         {
             id: 4,
@@ -50,7 +56,9 @@ export function Locations() {
             hours: language === 'es'
                 ? 'Lunes a Viernes: 7:30am - 5:00pm'
                 : 'Monday - Friday: 7:30am - 5:00pm',
-            link: '#'
+            link: '#',
+            lat: 26.0129,
+            lng: -80.3121
         },
         {
             id: 5,
@@ -61,7 +69,9 @@ export function Locations() {
             hours: language === 'es'
                 ? 'Lunes a Sábado: 8:00am - 4:30pm'
                 : 'Monday - Saturday: 8:00am - 4:30pm',
-            link: '#'
+            link: '#',
+            lat: 25.8211,
+            lng: -80.3540
         },
         {
             id: 6,
@@ -71,11 +81,19 @@ export function Locations() {
             phone: '(305) 982-8810',
             hours: language === 'es' ? 'Próxima apertura' : 'Opening soon',
             link: '#',
-            comingSoon: true
+            comingSoon: true,
+            lat: 25.8529,
+            lng: -80.2710
         }
     ];
 
     const selectedLocation = locations.find(loc => loc.id === selectedLocationId) || locations[0];
+
+    // Generate Google Maps embed URL for the selected location
+    const getMapEmbedUrl = (location: typeof locations[0]) => {
+        const query = encodeURIComponent(location.address);
+        return `https://www.google.com/maps?q=${query}&output=embed&z=16`;
+    };
 
     return (
         <section id="locations" className="py-12 sm:py-16 md:py-24 bg-gray-50 border-t border-gray-100 relative overflow-hidden scroll-mt-20">
@@ -108,14 +126,14 @@ export function Locations() {
                     {/* Left Column: Map */}
                     <div className="h-[250px] sm:h-[300px] lg:h-[600px] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-gray-100 relative">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949920000002!3d25.7823907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1sen!2sus!4v1709068000000!5m2!1sen!2sus"
+                            src={getMapEmbedUrl(selectedLocation)}
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}
                             allowFullScreen={true}
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
-                            title={language === 'es' ? 'Mapa de ubicaciones en Miami' : 'Miami locations map'}
+                            title={language === 'es' ? `Mapa de ${selectedLocation.name}` : `Map of ${selectedLocation.name}`}
                             className="absolute inset-0"
                         />
                     </div>
@@ -212,7 +230,15 @@ export function Locations() {
                         {/* Desktop vertical scroll */}
                         <div className="hidden lg:block overflow-y-auto pr-2 pb-4 space-y-4 rounded-xl custom-scrollbar h-full" style={{ maskImage: 'linear-gradient(to bottom, black 95%, transparent 100%)' }}>
                             {locations.map((loc) => (
-                                <div key={loc.id} className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div
+                                    key={loc.id}
+                                    onClick={() => setSelectedLocationId(loc.id)}
+                                    className={`bg-white rounded-xl p-6 border shadow-sm hover:shadow-md transition-all cursor-pointer ${
+                                        selectedLocationId === loc.id
+                                            ? 'border-primary-base ring-2 ring-primary-base/20'
+                                            : 'border-gray-100'
+                                    }`}
+                                >
                                     <div className="flex justify-between items-start mb-2">
                                         <span className={`text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md ${loc.comingSoon ? 'bg-orange-100 text-orange-600' : 'bg-primary-50 text-primary-base'}`}>
                                             {loc.type}
