@@ -111,13 +111,13 @@ export function Footer() {
                 {/* Partner Links */}
                 <div className="border-t border-white/10 pt-8 pb-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
                     <a
-                        href="https://www.estrellamedicalplans.com"
+                        href="https://affiliate.estrellamedicalplans.com/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm font-medium text-white/80 hover:text-accent-light transition-colors flex items-center gap-2"
                     >
                         <span className="text-accent-light">★</span>
-                        {language === 'es' ? 'Conoce el Plan' : 'Learn about the Plan'}
+                        {language === 'es' ? 'Conviértete en Afiliado' : 'Become an Affiliate'}
                     </a>
                     <a
                         href="https://estrellamedicalcenters.com"
