@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 
-const MAIN_SITE_URL = 'https://estrella-medical-centers.vercel.app';
+const PAYMENT_LINK = 'https://link.fastpaydirect.com/payment-link/69a0bf797819e367cb917544';
 
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -58,17 +58,7 @@ export function Header() {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center gap-6">
-                        {/* 1. About Estrella Medical Centers */}
-                        <a
-                            href={MAIN_SITE_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm font-semibold px-4 py-2 rounded-full bg-gradient-to-r from-accent-light to-accent-dark text-white hover:shadow-lg hover:scale-105 transition-all"
-                        >
-                            {language === 'es' ? 'Sobre Estrella Medical Centers' : 'About Estrella Medical Centers'}
-                        </a>
-
-                        {/* 2. Plan Benefits */}
+                        {/* 1. Plan Benefits */}
                         <a
                             href={getHref('#features')}
                             className="text-sm font-medium text-gray-700 hover:text-primary-base transition-colors py-2"
@@ -112,7 +102,7 @@ export function Header() {
                                 {language === 'es' ? 'EN' : 'ES'}
                             </span>
                         </button>
-                        <a href={getHref('#enrollment')}>
+                        <a href={PAYMENT_LINK} target="_blank" rel="noopener noreferrer">
                             <Button variant="primary">
                                 {t('nav.schedule')}
                             </Button>
@@ -166,21 +156,7 @@ export function Header() {
                 {/* Navigation Links */}
                 <nav className="flex-1 overflow-y-auto py-6 px-6">
                     <div className="space-y-2">
-                        {/* 1. About Estrella Medical Centers */}
-                        <a
-                            href={MAIN_SITE_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="flex items-center gap-3 px-4 py-3 rounded-xl bg-accent-base/20 text-accent-light font-semibold text-sm hover:bg-accent-base/30 transition-colors"
-                        >
-                            <div className="w-8 h-8 rounded-lg bg-accent-base/30 flex items-center justify-center">
-                                <span className="text-xs">★</span>
-                            </div>
-                            {language === 'es' ? 'Sobre Estrella Medical Centers' : 'About Estrella Medical Centers'}
-                        </a>
-
-                        {/* 2. Plan Benefits */}
+                        {/* 1. Plan Benefits */}
                         <a
                             href={getHref('#features')}
                             onClick={() => setIsMobileMenuOpen(false)}
@@ -249,7 +225,7 @@ export function Header() {
 
                 {/* Bottom CTA */}
                 <div className="p-6 border-t border-white/10 bg-black/10">
-                    <a href={getHref('#enrollment')} onClick={() => setIsMobileMenuOpen(false)} className="block">
+                    <a href={PAYMENT_LINK} target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="block">
                         <Button variant="accent" fullWidth size="lg" className="shadow-lg">
                             {t('nav.schedule')}
                         </Button>

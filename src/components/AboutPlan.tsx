@@ -14,12 +14,12 @@ export function AboutPlan() {
         <section id="about" className="py-12 sm:py-16 lg:py-32 bg-white overflow-hidden relative">
             {/* Decorative star accents - hidden on mobile */}
             <img
-                src="/assets/images/star-accent.png"
+                src="/assets/images/star-accent.webp"
                 alt=""
                 className="absolute top-16 right-8 w-48 opacity-[0.09] pointer-events-none hidden md:block"
             />
             <img
-                src="/assets/images/star-accent.png"
+                src="/assets/images/star-accent.webp"
                 alt=""
                 className="absolute bottom-24 left-5 w-36 opacity-[0.07] pointer-events-none rotate-12 hidden md:block"
             />
@@ -29,13 +29,13 @@ export function AboutPlan() {
                     <div className="relative">
                         {/* Main Image */}
                         <img
-                            src="/assets/images/candid-moment-inside-modern-south-florida.png"
+                            src="/assets/images/candid-moment-inside-modern-south-florida.webp"
                             alt="Medical Team"
                             className="rounded-2xl sm:rounded-[2rem] shadow-xl sm:shadow-2xl relative z-10 w-full object-cover h-[300px] sm:h-[400px] lg:h-[650px]"
                         />
                         {/* Decorative Offset Image */}
                         <img
-                            src="/assets/images/estrella-building.png"
+                            src="/assets/images/estrella-building.webp"
                             alt="Estrella Medical Center"
                             className="absolute -bottom-8 -right-8 lg:-bottom-12 lg:-right-12 w-48 h-48 lg:w-64 lg:h-64 object-cover rounded-[2rem] border-8 border-white shadow-xl z-20 hidden md:block"
                         />

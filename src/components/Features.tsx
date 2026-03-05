@@ -3,6 +3,8 @@ import { Stethoscope, Video, HeartPulse, Activity, Eye, Smile, ChevronRight, Che
 import { Button } from './ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 
+const PAYMENT_LINK = 'https://link.fastpaydirect.com/payment-link/69a0bf797819e367cb917544';
+
 export function Features() {
     const [activeIndex, setActiveIndex] = useState(0);
     const { t } = useLanguage();
@@ -25,7 +27,7 @@ export function Features() {
                 "Annual physical exams",
                 "Comprehensive care coordination"
             ],
-            image: "/assets/images/nside-a-south-florida-primary-care.png"
+            image: "/assets/images/nside-a-south-florida-primary-care.webp"
         },
         {
             id: 'telemedicine',
@@ -44,7 +46,7 @@ export function Features() {
                 "Electronic prescriptions",
                 "Available anytime"
             ],
-            image: "/assets/images/candid-moment-inside-modern-south-florida.png"
+            image: "/assets/images/candid-moment-inside-modern-south-florida.webp"
         },
         {
             id: 'specialists',
@@ -63,7 +65,7 @@ export function Features() {
                 "Quick appointments available",
                 "Network of certified specialists"
             ],
-            image: "/assets/images/cardiologist-using-stethoscope-to-examine.png"
+            image: "/assets/images/cardiologist-using-stethoscope-to-examine.webp"
         },
         {
             id: 'labs',
@@ -82,7 +84,7 @@ export function Features() {
                 "Cholesterol tests",
                 "Fast results"
             ],
-            image: "/assets/images/lab-technician-drawing-blood.png"
+            image: "/assets/images/lab-technician-drawing-blood.webp"
         },
         {
             id: 'dental',
@@ -101,7 +103,7 @@ export function Features() {
                 "Treatment discounts",
                 "Preventive dentistry"
             ],
-            image: "/assets/images/dentist-performing-routine-dental-checkup.png"
+            image: "/assets/images/dentist-performing-routine-dental-checkup.webp"
         },
         {
             id: 'vision',
@@ -120,7 +122,7 @@ export function Features() {
                 "Frame discounts",
                 "Eye disease detection"
             ],
-            image: "/assets/images/female-optometrist-adjusting-phoropter.png"
+            image: "/assets/images/female-optometrist-adjusting-phoropter.webp"
         }
     ];
 
@@ -157,12 +159,12 @@ export function Features() {
         <section id="features" className="py-16 md:py-24 bg-gray-50 relative overflow-hidden scroll-mt-20">
             {/* Decorative star accents - hidden on mobile */}
             <img
-                src="/assets/images/star-accent.png"
+                src="/assets/images/star-accent.webp"
                 alt=""
                 className="absolute top-24 left-8 w-56 opacity-[0.08] pointer-events-none hidden md:block"
             />
             <img
-                src="/assets/images/star-accent.png"
+                src="/assets/images/star-accent.webp"
                 alt=""
                 className="absolute bottom-16 right-8 w-44 opacity-[0.06] pointer-events-none rotate-12 hidden md:block"
             />
@@ -226,7 +228,7 @@ export function Features() {
                                                 </div>
                                             ))}
                                         </div>
-                                        <a href="#enrollment" className="block">
+                                        <a href={PAYMENT_LINK} className="block">
                                             <Button variant="primary" fullWidth size="md">
                                                 {t('features.enrollNow')}
                                             </Button>
@@ -358,7 +360,7 @@ export function Features() {
                                 </div>
 
                                 <div className="flex flex-wrap gap-4">
-                                    <a href="#enrollment">
+                                    <a href={PAYMENT_LINK}>
                                         <Button variant="primary" size="lg">
                                             {t('features.enrollNow')}
                                         </Button>
@@ -389,7 +391,7 @@ export function Features() {
                             </p>
                         </div>
                         <div className="flex justify-center md:justify-end">
-                            <a href="#enrollment" className="w-full sm:w-auto">
+                            <a href={PAYMENT_LINK} className="w-full sm:w-auto">
                                 <Button variant="accent" size="lg" className="whitespace-nowrap w-full sm:w-auto">
                                     {t('features.enrollNow')}
                                 </Button>

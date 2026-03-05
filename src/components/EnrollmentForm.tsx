@@ -1,242 +1,99 @@
-import { useState } from 'react';
+import { ArrowRight, CheckCircle2, Shield, Clock } from 'lucide-react';
 import { Button } from './ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 
 const PAYMENT_LINK = 'https://link.fastpaydirect.com/payment-link/69a0bf797819e367cb917544';
 
 export function EnrollmentForm() {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        dateOfBirth: '',
-        email: '',
-        phone: '',
-        address: ''
-    });
     const { language } = useLanguage();
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Store form data if needed (localStorage, send to backend, etc.)
-        // Then redirect to payment link
+    const handleClick = () => {
         window.location.href = PAYMENT_LINK;
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
     return (
-        <section className="py-12 sm:py-16 md:py-24 bg-primary-dark relative overflow-hidden text-white" id="enrollment">
-            {/* Decorative Gradients */}
-            <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-primary-base/50 to-transparent z-0" />
-            <div className="absolute -bottom-48 -left-48 w-96 h-96 bg-accent-base/10 rounded-full blur-3xl z-0 hidden sm:block" />
-            {/* Decorative star accents - hidden on mobile */}
+        <section className="py-16 sm:py-20 md:py-28 bg-white relative overflow-hidden" id="enrollment">
+            {/* Decorative star accents - Left side */}
             <img
                 src="/assets/images/star-accent.png"
                 alt=""
-                className="absolute top-12 right-12 w-56 opacity-20 pointer-events-none z-0 hidden md:block"
+                className="absolute top-12 left-4 sm:left-8 md:left-16 w-24 sm:w-32 md:w-44 opacity-[0.12] pointer-events-none z-0"
             />
             <img
                 src="/assets/images/star-accent.png"
                 alt=""
-                className="absolute bottom-16 left-8 w-44 opacity-15 pointer-events-none rotate-12 z-0 hidden md:block"
+                className="absolute top-1/3 left-8 sm:left-16 md:left-24 w-16 sm:w-24 md:w-32 opacity-[0.08] pointer-events-none rotate-12 z-0"
             />
             <img
                 src="/assets/images/star-accent.png"
                 alt=""
-                className="absolute top-1/2 left-1/4 w-32 opacity-10 pointer-events-none -rotate-6 z-0 hidden md:block"
+                className="absolute bottom-16 left-4 sm:left-12 md:left-20 w-20 sm:w-28 md:w-36 opacity-[0.10] pointer-events-none -rotate-6 z-0"
+            />
+
+            {/* Decorative star accents - Right side */}
+            <img
+                src="/assets/images/star-accent.png"
+                alt=""
+                className="absolute top-16 right-4 sm:right-8 md:right-16 w-20 sm:w-28 md:w-40 opacity-[0.10] pointer-events-none rotate-45 z-0"
+            />
+            <img
+                src="/assets/images/star-accent.png"
+                alt=""
+                className="absolute bottom-12 right-8 sm:right-16 md:right-24 w-16 sm:w-24 md:w-32 opacity-[0.08] pointer-events-none -rotate-12 z-0"
             />
 
             <div className="container mx-auto px-4 lg:px-8 relative z-10">
-                <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl sm:rounded-[2rem] p-4 sm:p-6 md:p-12 max-w-4xl mx-auto shadow-2xl">
-                    <div className="grid md:grid-cols-5 gap-6 md:gap-12 items-center">
+                <div className="max-w-4xl mx-auto text-center">
+                    {/* Badge */}
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 text-primary-dark font-medium text-sm mb-8 border border-primary-100">
+                        <Shield size={16} className="text-primary-base" />
+                        <span>{language === 'es' ? 'Solo $59/mes' : 'Only $59/month'}</span>
+                    </div>
 
-                        <div className="md:col-span-2 text-center md:text-left">
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
-                                {language === 'es' ? 'Inscríbase Hoy' : 'Enroll Today'}
-                            </h2>
-                            <p className="text-primary-light/80 text-sm sm:text-base md:text-lg mb-4 sm:mb-6 leading-relaxed max-w-sm mx-auto md:mx-0">
-                                {language === 'es'
-                                    ? 'Complete el formulario y continúe al pago para activar su membresía.'
-                                    : 'Complete the form and proceed to payment to activate your membership.'}
-                            </p>
+                    {/* Main Heading */}
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
+                        {language === 'es' ? '¿Listo para Comenzar?' : 'Ready to Get Started?'}
+                    </h2>
 
-                            {/* Steps - compact row on mobile, vertical on md+ */}
-                            <div className="hidden md:flex md:flex-col gap-4">
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-accent-light">
-                                        1
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold text-white">
-                                            {language === 'es' ? 'Complete sus datos' : 'Fill in your details'}
-                                        </h4>
-                                        <p className="text-sm text-white/60">
-                                            {language === 'es' ? 'Información básica de contacto' : 'Basic contact information'}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-accent-light">
-                                        2
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold text-white">
-                                            {language === 'es' ? 'Realice el pago' : 'Make payment'}
-                                        </h4>
-                                        <p className="text-sm text-white/60">
-                                            {language === 'es' ? 'Pago seguro en línea' : 'Secure online payment'}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-accent-light">
-                                        3
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold text-white">
-                                            {language === 'es' ? 'Reciba su membresía' : 'Receive your membership'}
-                                        </h4>
-                                        <p className="text-sm text-white/60">
-                                            {language === 'es' ? 'Manual enviado por email' : 'Manual sent via email'}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                    <p className="text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                        {language === 'es'
+                            ? 'Inscríbase hoy y comience a disfrutar de todos los beneficios del Plan Médico Estrella. Atención médica de calidad para usted y su familia.'
+                            : 'Enroll today and start enjoying all the benefits of the Estrella Medical Plan. Quality medical care for you and your family.'}
+                    </p>
 
-                            {/* Mobile: Simple numbered badges */}
-                            <div className="flex md:hidden justify-center gap-3 mb-2">
-                                <div className="flex items-center gap-2 bg-white/10 rounded-full px-3 py-1.5">
-                                    <span className="w-5 h-5 rounded-full bg-accent-light/20 flex items-center justify-center text-accent-light text-xs font-bold">1</span>
-                                    <span className="text-xs text-white/80">{language === 'es' ? 'Datos' : 'Info'}</span>
-                                </div>
-                                <div className="flex items-center gap-2 bg-white/10 rounded-full px-3 py-1.5">
-                                    <span className="w-5 h-5 rounded-full bg-accent-light/20 flex items-center justify-center text-accent-light text-xs font-bold">2</span>
-                                    <span className="text-xs text-white/80">{language === 'es' ? 'Pago' : 'Pay'}</span>
-                                </div>
-                                <div className="flex items-center gap-2 bg-white/10 rounded-full px-3 py-1.5">
-                                    <span className="w-5 h-5 rounded-full bg-accent-light/20 flex items-center justify-center text-accent-light text-xs font-bold">3</span>
-                                    <span className="text-xs text-white/80">{language === 'es' ? 'Listo' : 'Done'}</span>
-                                </div>
-                            </div>
+                    {/* Features Row */}
+                    <div className="flex flex-wrap justify-center gap-6 mb-12">
+                        <div className="flex items-center gap-2 text-gray-700">
+                            <CheckCircle2 size={20} className="text-green-500" />
+                            <span className="text-sm sm:text-base">{language === 'es' ? 'Sin deducibles' : 'No deductibles'}</span>
                         </div>
-
-                        <div className="md:col-span-3 bg-white text-gray-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
-                            <form onSubmit={handleSubmit} className="space-y-3">
-                                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4 md:mb-6 text-center md:text-left">
-                                    {language === 'es' ? 'Información Personal' : 'Personal Information'}
-                                </h3>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    <div className="space-y-1">
-                                        <label htmlFor="firstName" className="text-xs sm:text-sm font-medium text-gray-700">
-                                            {language === 'es' ? 'Nombre' : 'First Name'}
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="firstName"
-                                            name="firstName"
-                                            required
-                                            value={formData.firstName}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm"
-                                            placeholder="Juan"
-                                        />
-                                    </div>
-                                    <div className="space-y-1">
-                                        <label htmlFor="lastName" className="text-xs sm:text-sm font-medium text-gray-700">
-                                            {language === 'es' ? 'Apellido' : 'Last Name'}
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="lastName"
-                                            name="lastName"
-                                            required
-                                            value={formData.lastName}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm"
-                                            placeholder="Pérez"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="space-y-1">
-                                    <label htmlFor="dateOfBirth" className="text-xs sm:text-sm font-medium text-gray-700">
-                                        {language === 'es' ? 'Fecha de Nacimiento' : 'Date of Birth'}
-                                    </label>
-                                    <input
-                                        type="date"
-                                        id="dateOfBirth"
-                                        name="dateOfBirth"
-                                        required
-                                        value={formData.dateOfBirth}
-                                        onChange={handleChange}
-                                        className="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm"
-                                    />
-                                </div>
-
-                                <div className="space-y-1">
-                                    <label htmlFor="email" className="text-xs sm:text-sm font-medium text-gray-700">
-                                        {language === 'es' ? 'Correo Electrónico' : 'Email'}
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        required
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        className="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm"
-                                        placeholder="juan@ejemplo.com"
-                                    />
-                                </div>
-
-                                <div className="space-y-1">
-                                    <label htmlFor="phone" className="text-xs sm:text-sm font-medium text-gray-700">
-                                        {language === 'es' ? 'Teléfono' : 'Phone'}
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        id="phone"
-                                        name="phone"
-                                        required
-                                        value={formData.phone}
-                                        onChange={handleChange}
-                                        className="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm"
-                                        placeholder="(305) 555-0123"
-                                    />
-                                </div>
-
-                                <div className="space-y-1">
-                                    <label htmlFor="address" className="text-xs sm:text-sm font-medium text-gray-700">
-                                        {language === 'es' ? 'Dirección' : 'Address'}
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="address"
-                                        name="address"
-                                        required
-                                        value={formData.address}
-                                        onChange={handleChange}
-                                        className="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-primary-base focus:ring-2 focus:ring-primary-base/20 outline-none transition-all text-sm"
-                                        placeholder={language === 'es' ? '123 Calle Principal, Miami' : '123 Main St, Miami'}
-                                    />
-                                </div>
-
-                                <div className="pt-2 sm:pt-3">
-                                    <Button type="submit" variant="primary" fullWidth size="lg">
-                                        {language === 'es' ? 'Continuar al Pago' : 'Continue to Payment'}
-                                    </Button>
-                                    <p className="text-center text-[10px] sm:text-xs text-gray-500 mt-2 sm:mt-3">
-                                        {language === 'es'
-                                            ? 'Al continuar, acepta nuestros términos.'
-                                            : 'By continuing, you agree to our terms.'}
-                                    </p>
-                                </div>
-                            </form>
+                        <div className="flex items-center gap-2 text-gray-700">
+                            <CheckCircle2 size={20} className="text-green-500" />
+                            <span className="text-sm sm:text-base">{language === 'es' ? 'Activación inmediata' : 'Immediate activation'}</span>
                         </div>
+                        <div className="flex items-center gap-2 text-gray-700">
+                            <Clock size={20} className="text-primary-base" />
+                            <span className="text-sm sm:text-base">{language === 'es' ? 'Telemedicina 24/7' : '24/7 Telemedicine'}</span>
+                        </div>
+                    </div>
 
+                    {/* CTA Button */}
+                    <div className="flex flex-col items-center gap-4">
+                        <Button
+                            variant="primary"
+                            size="lg"
+                            onClick={handleClick}
+                            className="px-10 py-5 text-lg sm:text-xl font-bold shadow-xl shadow-primary-base/20 hover:shadow-2xl hover:shadow-primary-base/30 transition-all group"
+                        >
+                            {language === 'es' ? 'Inscríbase Ahora' : 'Enroll Now'}
+                            <ArrowRight size={22} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+
+                        <p className="text-gray-400 text-sm">
+                            {language === 'es'
+                                ? 'Pago seguro. Cancele en cualquier momento.'
+                                : 'Secure payment. Cancel anytime.'}
+                        </p>
                     </div>
                 </div>
             </div>

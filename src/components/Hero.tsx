@@ -2,6 +2,8 @@ import { ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { Button } from './ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 
+const PAYMENT_LINK = 'https://link.fastpaydirect.com/payment-link/69a0bf797819e367cb917544';
+
 export function Hero() {
     const { t } = useLanguage();
 
@@ -18,19 +20,19 @@ export function Hero() {
             {/* Background Image with Elegant Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="/assets/images/candid-supportive-conversation-inside-modern.png"
+                    src="/assets/images/candid-supportive-conversation-inside-modern.webp"
                     alt="Estrella Medical Center Care"
                     className="w-full h-full object-cover object-center opacity-70"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-light/50 via-primary-base/40 to-primary-light/30" />
                 {/* Decorative star accents in hero background - hidden on mobile */}
                 <img
-                    src="/assets/images/star-accent.png"
+                    src="/assets/images/star-accent.webp"
                     alt=""
                     className="absolute top-10 left-5 w-40 md:w-72 opacity-15 pointer-events-none animate-float hidden sm:block"
                 />
                 <img
-                    src="/assets/images/star-accent.png"
+                    src="/assets/images/star-accent.webp"
                     alt=""
                     className="absolute bottom-5 right-10 w-32 md:w-56 opacity-10 pointer-events-none rotate-12 animate-float delay-500 hidden sm:block"
                 />
@@ -59,7 +61,7 @@ export function Hero() {
                         </p>
 
                         <div className="flex flex-row gap-2 sm:gap-4 animate-fade-in-up delay-300 justify-center lg:justify-start">
-                            <a href="#enrollment" className="flex-1 sm:flex-none">
+                            <a href={PAYMENT_LINK} className="flex-1 sm:flex-none">
                                 <Button variant="accent" size="lg" className="animate-pulse-glow w-full sm:w-auto text-xs sm:text-base px-3 sm:px-6">
                                     {t('hero.cta1')}
                                 </Button>
@@ -91,12 +93,12 @@ export function Hero() {
                             <div className="absolute top-0 inset-x-0 h-36 sm:h-44 bg-gradient-to-br from-primary-light via-primary-base to-primary-dark overflow-hidden">
                                 {/* Star accents in card header */}
                                 <img
-                                    src="/assets/images/star-accent.png"
+                                    src="/assets/images/star-accent.webp"
                                     alt=""
                                     className="absolute -top-6 -right-10 w-32 sm:w-44 opacity-25 pointer-events-none"
                                 />
                                 <img
-                                    src="/assets/images/star-accent.png"
+                                    src="/assets/images/star-accent.webp"
                                     alt=""
                                     className="absolute top-6 -left-8 w-24 sm:w-32 opacity-20 pointer-events-none rotate-45"
                                 />
@@ -125,7 +127,7 @@ export function Hero() {
                                     ))}
                                 </ul>
 
-                                <a href="#enrollment" className="block">
+                                <a href={PAYMENT_LINK} className="block">
                                     <Button variant="primary" fullWidth size="lg" className="shadow-primary-base/20 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] text-sm sm:text-base">
                                         {t('hero.startNow')}
                                     </Button>
@@ -137,7 +139,7 @@ export function Hero() {
                         {/* Logo badge element - hidden on mobile */}
                         <div className="absolute -bottom-6 -left-16 w-28 h-28 drop-shadow-2xl z-20 hidden lg:flex rounded-full border-4 border-white bg-white items-center justify-center pointer-events-none overflow-hidden p-[2px] animate-scale-in delay-500">
                             <img
-                                src="/assets/images/Estrella_Favicon.png"
+                                src="/assets/images/Estrella_Favicon.webp"
                                 alt="Estrella Medical"
                                 className="w-full h-full object-contain"
                             />

@@ -11,7 +11,7 @@ export function Services() {
     const services = [
         {
             title: language === 'es' ? "Cuidado Primario" : "Primary Care",
-            image: "/assets/images/primary-care.jpg",
+            image: "/assets/images/primary-care.webp",
             description: language === 'es'
                 ? "Atención médica preventiva y manejo de enfermedades crónicas con nuestros doctores primarios."
                 : "Preventive medical care and chronic disease management with our primary care doctors.",
@@ -19,7 +19,7 @@ export function Services() {
         },
         {
             title: language === 'es' ? "Servicios Dentales" : "Dental Services",
-            image: "/assets/images/dental.jpg",
+            image: "/assets/images/dental.webp",
             description: language === 'es'
                 ? "Cuidado oral completo incluyendo limpiezas, extracciones, y odontología cosmética para toda la familia."
                 : "Complete oral care including cleanings, extractions, and cosmetic dentistry for the whole family.",
@@ -27,7 +27,7 @@ export function Services() {
         },
         {
             title: language === 'es' ? "Especialidades Médicas" : "Medical Specialties",
-            image: "/assets/images/specialists.jpg",
+            image: "/assets/images/specialists.webp",
             description: language === 'es'
                 ? "Más de 15 especialidades médicas disponibles en nuestras clínicas para cuidado avanzado."
                 : "Over 15 medical specialties available at our clinics for advanced care.",
@@ -35,7 +35,7 @@ export function Services() {
         },
         {
             title: language === 'es' ? "Centro de Diagnóstico" : "Diagnostic Center",
-            image: "/assets/images/diagnostics.jpg",
+            image: "/assets/images/diagnostics.webp",
             description: language === 'es'
                 ? "Rayos X, ultrasonidos, EKGs y otros servicios diagnósticos con tecnología de última generación."
                 : "X-rays, ultrasounds, EKGs and other diagnostic services with cutting-edge technology.",
@@ -71,12 +71,12 @@ export function Services() {
         <section className="py-16 md:py-24 bg-white relative overflow-hidden">
             {/* Decorative star accents - hidden on mobile */}
             <img
-                src="/assets/images/star-accent.png"
+                src="/assets/images/star-accent.webp"
                 alt=""
                 className="absolute top-12 right-6 w-44 opacity-[0.08] pointer-events-none hidden md:block"
             />
             <img
-                src="/assets/images/star-accent.png"
+                src="/assets/images/star-accent.webp"
                 alt=""
                 className="absolute bottom-8 left-12 w-36 opacity-[0.06] pointer-events-none -rotate-12 hidden md:block"
             />

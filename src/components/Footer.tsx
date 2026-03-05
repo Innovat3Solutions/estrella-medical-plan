@@ -12,17 +12,17 @@ export function Footer() {
         <footer className="bg-gradient-to-br from-primary-dark via-primary-base to-primary-light text-white pt-12 sm:pt-16 md:pt-20 pb-8 sm:pb-10 relative overflow-hidden">
             {/* Decorative star accents - hidden on mobile */}
             <img
-                src="/assets/images/star-accent.png"
+                src="/assets/images/star-accent.webp"
                 alt=""
                 className="absolute top-8 right-8 w-56 opacity-15 pointer-events-none hidden md:block"
             />
             <img
-                src="/assets/images/star-accent.png"
+                src="/assets/images/star-accent.webp"
                 alt=""
                 className="absolute bottom-16 left-5 w-44 opacity-10 pointer-events-none rotate-12 hidden md:block"
             />
             <img
-                src="/assets/images/star-accent.png"
+                src="/assets/images/star-accent.webp"
                 alt=""
                 className="absolute top-1/2 right-1/4 w-32 opacity-8 pointer-events-none -rotate-12 hidden md:block"
             />
@@ -108,6 +108,27 @@ export function Footer() {
 
                 </div>
 
+                {/* Partner Links */}
+                <div className="border-t border-white/10 pt-8 pb-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+                    <a
+                        href="https://www.estrellamedicalplans.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-white/80 hover:text-accent-light transition-colors flex items-center gap-2"
+                    >
+                        <span className="text-accent-light">★</span>
+                        {language === 'es' ? 'Conoce el Plan' : 'Learn about the Plan'}
+                    </a>
+                    <a
+                        href="https://estrellamedicalcenters.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-white/80 hover:text-accent-light transition-colors"
+                    >
+                        Estrella Medical Centers →
+                    </a>
+                </div>
+
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-white/50 text-xs text-center md:text-left">
                         &copy; {new Date().getFullYear()} Estrella Medical Centers. {t('footer.rights')}
@@ -119,6 +140,21 @@ export function Footer() {
                         <span>|</span>
                         <a href="#" className="hover:text-white transition-colors">{t('footer.hipaa')}</a>
                     </div>
+                </div>
+
+                {/* Designer Credit */}
+                <div className="mt-6 pt-4 border-t border-white/5 text-center">
+                    <p className="text-white/40 text-xs">
+                        {language === 'es' ? 'Este sitio web fue diseñado y es soportado por' : 'This website was designed and is supported by'}{' '}
+                        <a
+                            href="https://innovat3solutions.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-accent-light hover:text-white transition-colors font-medium"
+                        >
+                            Innovat3 Solutions
+                        </a>
+                    </p>
                 </div>
             </div>
         </footer>

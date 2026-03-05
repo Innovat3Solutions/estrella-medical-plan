@@ -14,12 +14,12 @@ export function ThankYou() {
             <main className="pt-32 pb-24 relative overflow-hidden">
                 {/* Decorative star accents */}
                 <img
-                    src="/assets/images/star-accent.png"
+                    src="/assets/images/star-accent.webp"
                     alt=""
                     className="absolute top-24 right-12 w-56 opacity-[0.08] pointer-events-none"
                 />
                 <img
-                    src="/assets/images/star-accent.png"
+                    src="/assets/images/star-accent.webp"
                     alt=""
                     className="absolute bottom-20 left-8 w-44 opacity-[0.06] pointer-events-none rotate-12"
                 />
