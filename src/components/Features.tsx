@@ -245,11 +245,10 @@ export function Features() {
                             <button
                                 key={index}
                                 onClick={() => scrollToFeature(index)}
-                                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                    mobileActiveIndex === index
+                                className={`w-2 h-2 rounded-full transition-all duration-300 ${mobileActiveIndex === index
                                         ? 'bg-primary-base w-6'
                                         : 'bg-gray-300'
-                                }`}
+                                    }`}
                                 aria-label={`Go to feature ${index + 1}`}
                             />
                         ))}
@@ -275,41 +274,36 @@ export function Features() {
                                         <button
                                             key={feature.id}
                                             onClick={() => setActiveIndex(index)}
-                                            className={`w-full flex items-center gap-4 p-5 text-left transition-all duration-300 group ${
-                                                isActive
+                                            className={`w-full flex items-center gap-4 p-5 text-left transition-all duration-300 group ${isActive
                                                     ? 'bg-primary-base text-white'
                                                     : 'hover:bg-gray-50 text-gray-700 hover:text-primary-base'
-                                            }`}
+                                                }`}
                                         >
-                                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${
-                                                isActive
+                                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${isActive
                                                     ? 'bg-white/20'
                                                     : 'bg-primary-light/10 group-hover:bg-primary-light/20'
-                                            }`}>
+                                                }`}>
                                                 <Icon
                                                     size={24}
                                                     className={isActive ? 'text-white' : 'text-primary-base'}
                                                 />
                                             </div>
                                             <div className="flex-1 min-w-0">
-                                                <h5 className={`font-semibold truncate ${
-                                                    isActive ? 'text-white' : 'text-gray-900'
-                                                }`}>
+                                                <h5 className={`font-semibold truncate ${isActive ? 'text-white' : 'text-gray-900'
+                                                    }`}>
                                                     {feature.title}
                                                 </h5>
-                                                <p className={`text-sm truncate ${
-                                                    isActive ? 'text-white/70' : 'text-gray-500'
-                                                }`}>
+                                                <p className={`text-sm truncate ${isActive ? 'text-white/70' : 'text-gray-500'
+                                                    }`}>
                                                     {feature.description.slice(0, 40)}...
                                                 </p>
                                             </div>
                                             <ChevronRight
                                                 size={20}
-                                                className={`flex-shrink-0 transition-transform ${
-                                                    isActive
+                                                className={`flex-shrink-0 transition-transform ${isActive
                                                         ? 'text-white translate-x-1'
                                                         : 'text-gray-400 group-hover:translate-x-1'
-                                                }`}
+                                                    }`}
                                             />
                                         </button>
                                     );
@@ -365,11 +359,7 @@ export function Features() {
                                             {t('features.enrollNow')}
                                         </Button>
                                     </a>
-                                    <a href={`#${activeFeature.id}`}>
-                                        <Button variant="outline" size="lg">
-                                            {t('features.moreInfo')}
-                                        </Button>
-                                    </a>
+
                                 </div>
                             </div>
                         </div>
