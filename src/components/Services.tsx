@@ -21,8 +21,8 @@ export function Services() {
             title: language === 'es' ? "Servicios Dentales" : "Dental Services",
             image: "/assets/images/dental.webp",
             description: language === 'es'
-                ? "Cuidado oral completo incluyendo limpiezas, extracciones, y odontología cosmética para toda la familia."
-                : "Complete oral care including cleanings, extractions, and cosmetic dentistry for the whole family.",
+                ? "Cuidado oral preventivo incluyendo limpiezas y exámenes dentales para toda la familia."
+                : "Preventive oral care including cleanings and dental exams for the whole family.",
             link: `${MAIN_SITE_URL}/services/dental`
         },
         {

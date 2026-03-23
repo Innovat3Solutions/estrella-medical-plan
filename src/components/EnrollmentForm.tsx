@@ -47,7 +47,7 @@ export function EnrollmentForm() {
                     {/* Badge */}
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 text-primary-dark font-medium text-sm mb-8 border border-primary-100">
                         <Shield size={16} className="text-primary-base" />
-                        <span>{language === 'es' ? 'Solo $59/mes' : 'Only $59/month'}</span>
+                        <span>{language === 'es' ? 'Solo $59/mes + $30 inscripción' : 'Only $59/month + $30 enrollment fee'}</span>
                     </div>
 
                     {/* Main Heading */}

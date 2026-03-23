@@ -55,14 +55,14 @@ export function Features() {
             description: t('feature.specialists.desc'),
             details: [
                 "Más de 15 especialidades",
-                "Tarifas preferenciales",
-                "Citas rápidas disponibles",
+                "Requiere referido médico",
+                "Solo por necesidad médica",
                 "Red de especialistas certificados"
             ],
             detailsEn: [
                 "Over 15 specialties",
-                "Preferential rates",
-                "Quick appointments available",
+                "Requires physician referral",
+                "Medical necessity only",
                 "Network of certified specialists"
             ],
             image: "/assets/images/cardiologist-using-stethoscope-to-examine.webp"
@@ -73,16 +73,18 @@ export function Features() {
             title: t('feature.labs.title'),
             description: t('feature.labs.desc'),
             details: [
-                "Análisis de sangre completos",
-                "Panel metabólico básico",
-                "Pruebas de colesterol",
-                "Resultados rápidos"
+                "CBC (Conteo sanguíneo completo)",
+                "CMP (Panel metabólico completo)",
+                "Panel de lípidos",
+                "Hemoglobina A1C",
+                "Urianálisis"
             ],
             detailsEn: [
-                "Complete blood analysis",
-                "Basic metabolic panel",
-                "Cholesterol tests",
-                "Fast results"
+                "CBC (Complete Blood Count)",
+                "CMP (Comprehensive Metabolic Panel)",
+                "Lipid Panel",
+                "Hemoglobin A1C",
+                "Urinalysis"
             ],
             image: "/assets/images/lab-technician-drawing-blood.webp"
         },
@@ -93,15 +95,15 @@ export function Features() {
             description: t('feature.dental.desc'),
             details: [
                 "2 limpiezas anuales incluidas",
-                "Radiografías dentales",
                 "Descuentos en tratamientos",
-                "Odontología preventiva"
+                "Odontología preventiva",
+                "Activo después de 3 meses"
             ],
             detailsEn: [
                 "2 annual cleanings included",
-                "Dental X-rays",
                 "Treatment discounts",
-                "Preventive dentistry"
+                "Preventive dentistry",
+                "Active after 3 months"
             ],
             image: "/assets/images/dentist-performing-routine-dental-checkup.webp"
         },
@@ -112,15 +114,15 @@ export function Features() {
             description: t('feature.vision.desc'),
             details: [
                 "Examen de vista anual",
-                "Un par de lentes básicos",
-                "Descuentos en monturas",
-                "Detección de enfermedades oculares"
+                "1 par de armazones básicos incluido",
+                "Detección de enfermedades oculares",
+                "Activo después de 3 meses"
             ],
             detailsEn: [
                 "Annual eye exam",
-                "One pair of basic lenses",
-                "Frame discounts",
-                "Eye disease detection"
+                "1 pair of basic frames included",
+                "Eye disease detection",
+                "Active after 3 months"
             ],
             image: "/assets/images/female-optometrist-adjusting-phoropter.webp"
         }

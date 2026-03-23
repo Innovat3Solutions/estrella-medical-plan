@@ -5,8 +5,8 @@ export function Footer() {
     const { t, language } = useLanguage();
 
     const serviceLinks = language === 'es'
-        ? ['Cuidado Primario', 'Cuidado Dental', 'Centro de Diagnóstico', 'Farmacia', 'Transporte Médico', 'Especialidades']
-        : ['Primary Care', 'Dental Care', 'Diagnostic Center', 'Pharmacy', 'Medical Transport', 'Specialties'];
+        ? ['Cuidado Primario', 'Cuidado Dental', 'Centro de Diagnóstico', 'Farmacia', 'Especialidades']
+        : ['Primary Care', 'Dental Care', 'Diagnostic Center', 'Pharmacy', 'Specialties'];
 
     return (
         <footer className="bg-gradient-to-br from-primary-dark via-primary-base to-primary-light text-white pt-12 sm:pt-16 md:pt-20 pb-8 sm:pb-10 relative overflow-hidden">
