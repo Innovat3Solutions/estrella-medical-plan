@@ -114,6 +114,7 @@ const translations = {
         'hero.feature5': 'Transporte a citas médicas',
         'hero.startNow': 'Comienza Ahora',
         'hero.terms': '* Aplican términos y condiciones.',
+        'hero.enrollmentFee': '+ $30 de inscripción',
 
         // Features
         'features.badge': 'Beneficios Exclusivos',
@@ -300,6 +301,7 @@ const translations = {
         'hero.feature5': 'Medical appointment transport',
         'hero.startNow': 'Start Now',
         'hero.terms': '* Terms and conditions apply.',
+        'hero.enrollmentFee': '+ $30 enrollment fee',
 
         // Features
         'features.badge': 'Exclusive Benefits',

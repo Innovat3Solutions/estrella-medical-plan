@@ -113,6 +113,9 @@ export function Hero() {
                                     <span className="text-5xl sm:text-7xl font-bold tracking-tighter">59</span>
                                     <span className="text-sm sm:text-lg font-medium text-white/80 self-end mb-2 sm:mb-3 ml-1">{t('hero.perMonth')}</span>
                                 </div>
+                                <p className="text-white/70 text-xs sm:text-sm mt-1">
+                                    {t('hero.enrollmentFee')}
+                                </p>
                             </div>
 
                             <div className="relative bg-white pt-6 sm:pt-8 pb-8 sm:pb-10 px-5 sm:px-8 rounded-t-[1.5rem] sm:rounded-t-[2rem] -mt-4">
